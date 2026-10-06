@@ -1,0 +1,69 @@
+<div class="container-fluid bg-light min-vh-100 p-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-4">Besoins pour l'article {{ articleId }}</h2>
+        <div class="d-flex gap-2">
+          <button class="btn btn-secondary" [routerLink]="['/dashboard/articles']">
+            <i class="bi bi-arrow-left"></i> Retour à la liste des articles
+          </button>
+          <button class="btn btn-primary" [routerLink]="['/dashboard/besoins/new', articleId]">
+            <i class="bi bi-plus-circle"></i> Ajouter un besoin
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="loading" class="text-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Chargement...</span>
+        </div>
+      </div>
+
+      <div *ngIf="error" class="alert alert-danger">
+        {{ error }}
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead class="table-dark">
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Quantité</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let besoin of besoins" class="align-middle">
+            <td>{{ formatDate(besoin.dateBesoin) }}</td>
+            <td>
+                <span class="badge" [ngClass]="{
+                  'bg-success': besoin.typeBesoin === 'PRODUCTION',
+                  'bg-info': besoin.typeBesoin === 'NEGOCE',
+                  'bg-warning': besoin.typeBesoin === 'DEVIS'
+                }">
+                  {{ besoin.typeBesoin }}
+                </span>
+            </td>
+            <td>{{ besoin.besoinArticles[0]?.quantite }} unités</td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-sm btn-primary" [routerLink]="['/dashboard/besoins/edit', besoin.id]">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn btn-sm btn-danger" (click)="deleteBesoin(besoin.id)">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="besoins.length === 0 && !loading" class="alert alert-info">
+        Aucun besoin n'a été trouvé pour cet article.
+      </div>
+    </div>
+  </div>
+</div>

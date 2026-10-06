@@ -1,0 +1,84 @@
+<!-- src/app/dashboard/article-list/article-list.component.html -->
+<div class="container-fluid bg-light vh-100 p-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-4 text-center"> Gestion des Articles</h2>
+        <button
+          class="btn btn-primary"
+          [routerLink]="['/articles/new']"
+          *ngIf="!readOnly"
+        >
+          <i class="bi bi-plus-circle"></i> Ajouter un Article
+        </button>
+      </div>
+
+      <div *ngIf="loading" class="text-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Chargement...</span>
+        </div>
+      </div>
+
+      <div *ngIf="error" class="alert alert-danger">
+        {{ error }}
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th>Alerte</th>
+            <th>Référence</th>
+            <th>Description</th>
+            <th>Stock Sécurité</th>
+            <th>Quantité Conditionnement</th>
+            <th>Quantité</th>
+            <th>Prix</th> <!-- ✅ Nouvelle colonne ajoutée -->
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let article of articles">
+            <td>
+      <span *ngIf="article.statutStock === 'OK'" class="badge bg-success" title="Stock OK">
+        <i class="bi bi-check-circle"></i>
+      </span>
+              <span *ngIf="article.statutStock === 'FAIBLE'" class="badge bg-warning text-dark" title="Stock faible">
+        <i class="bi bi-exclamation-triangle"></i>
+      </span>
+              <span *ngIf="article.statutStock === 'RUPTURE'" class="badge bg-danger" title="Rupture de stock">
+        <i class="bi bi-x-circle"></i>
+      </span>
+            </td>
+            <td>{{ article.reference }}</td>
+            <td>{{ article.description }}</td>
+            <td>{{ article.stockSecurite }}</td>
+            <td>{{ article.quantiteConditionnement }}</td>
+            <td>{{ article.quantite }}</td>
+            <td>{{ article.prix | number: '1.2-2' }} DH</td> <!-- ✅ Affichage du prix avec deux décimales -->
+            <td>
+              <ng-container *ngIf="!readOnly; else readonlyButtons">
+                <button class="btn btn-sm btn-warning me-1" (click)="editArticle(article)">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn btn-sm btn-danger" (click)="deleteArticle(article)">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </ng-container>
+              <ng-template #readonlyButtons>
+                <button class="btn btn-sm btn-secondary me-1" disabled>
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn btn-sm btn-secondary" disabled>
+                  <i class="bi bi-trash"></i>
+                </button>
+              </ng-template>
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<!-- gestion-stock-front/src/app/auth/login/login.component.html -->
+
+<div class="auth-container">
+  <div class="auth-card">
+    <!-- Logo et titre -->
+    <div class="auth-header">
+      <div class="logo-container">
+        <i class="bi bi-box-seam-fill"></i>
+      </div>
+      <h1 class="auth-title">Connexion</h1>
+      <p class="auth-subtitle">Accédez à votre espace de gestion</p>
+    </div>
+
+    <!-- Message d'erreur -->
+    <div *ngIf="errorMessage" class="alert alert-danger alert-modern">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>
+      {{ errorMessage }}
+    </div>
+
+    <!-- Formulaire -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
+
+      <!-- Email -->
+      <div class="form-group-modern">
+        <label for="email" class="form-label-modern">
+          <i class="bi bi-envelope-fill"></i>
+          Email
+        </label>
+        <input
+          type="email"
+          class="form-control-modern"
+          id="email"
+          formControlName="email"
+          placeholder="votre@email.com"
+          [class.is-invalid]="formControls['email'].invalid"
+        >
+        <div *ngIf="formControls['email'].invalid" class="error-message">
+          <i class="bi bi-exclamation-circle"></i>
+          <span *ngIf="formControls['email'].errors?.['required']">L'email est requis</span>
+          <span *ngIf="formControls['email'].errors?.['email']">Format email invalide</span>
+          <span *ngIf="formControls['email'].errors?.['pattern']">Format email invalide</span>
+        </div>
+      </div>
+
+      <!-- Mot de passe -->
+      <div class="form-group-modern">
+        <label for="motDePasse" class="form-label-modern">
+          <i class="bi bi-lock-fill"></i>
+          Mot de passe
+        </label>
+        <div class="password-input-container">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control-modern"
+            id="motDePasse"
+            formControlName="motDePasse"
+            placeholder="Votre mot de passe"
+            [class.is-invalid]="formControls['motDePasse'].invalid"
+          >
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="togglePassword()"
+            [attr.aria-label]="showPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe'"
+          >
+            <i class="bi" [class.bi-eye]="!showPassword" [class.bi-eye-slash]="showPassword"></i>
+          </button>
+        </div>
+        <div *ngIf="formControls['motDePasse'].invalid" class="error-message">
+          <i class="bi bi-exclamation-circle"></i>
+          <span *ngIf="formControls['motDePasse'].errors?.['required']">Le mot de passe est requis</span>
+          <span *ngIf="formControls['motDePasse'].errors?.['minlength']">Le mot de passe doit contenir au moins 6 caractères</span>
+        </div>
+      </div>
+
+      <!-- Bouton de connexion -->
+      <button
+        type="submit"
+        class="btn-auth-primary"
+        [disabled]="isLoading || loginForm.invalid"
+      >
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+        <i *ngIf="!isLoading" class="bi bi-box-arrow-in-right me-2"></i>
+        {{ isLoading ? 'Connexion...' : 'Se connecter' }}
+      </button>
+
+      <div class="auth-footer"><p class="auth-link-text">Pour obtenir un compte, contactez votre administrateur.</p></div>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+/* === Styles Modernes pour le Dashboard === */
+
+.container-fluid {
+  background-color: #f4f7fc;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* --- Cartes du dashboard --- */
+.card {
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(52, 152, 219, 0.10);
+  transition: transform 0.15s, box-shadow 0.15s;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 16px 48px rgba(52, 152, 219, 0.18);
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.card h3 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card .bi {
+  font-size: 2.5rem;
+  opacity: 0.8;
+  margin-left: 1rem;
+}
+
+.btn-outline-light {
+  border-radius: 50px;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border-width: 2px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-outline-light:hover {
+  background: #fff;
+  color: #2980b9;
+  border-color: #fff;
+}
+
+/* --- Couleurs personnalisées pour les cartes (si besoin) --- */
+.bg-primary {
+  background: linear-gradient(45deg, #3498db, #2980b9) !important;
+}
+.bg-success {
+  background: linear-gradient(45deg, #2ecc71, #27ae60) !important;
+}
+.bg-warning {
+  background: linear-gradient(45deg, #f1c40f, #f39c12) !important;
+  color: #2c3e50 !important;
+}
+.bg-danger {
+  background: linear-gradient(45deg, #e74c3c, #c0392b) !important;
+}
+.bg-info {
+  background: linear-gradient(45deg, #6dd5fa, #2980b9) !important;
+  color: #2c3e50 !important;
+}
+.bg-indigo {
+  background: linear-gradient(45deg, #6a82fb, #fc5c7d) !important;
+}
+
+/* --- Spinner --- */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  color: #3498db;
+  margin: 2rem auto;
+  display: block;
+}
+
+/* --- Responsive --- */
+@media (max-width: 991px) {
+  .card {
+    margin-bottom: 1.5rem;
+  }
+}

@@ -1,0 +1,61 @@
+<div class="container mt-4">
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Chargement...</span>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="!loading">
+    <div class="card-header">
+      <h3 class="mb-0">{{ isEdit ? 'Modifier un acheteur' : 'Ajouter un acheteur' }}</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="acheteurForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <!-- Nom -->
+          <div class="col-md-6 mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input id="nom" type="text" class="form-control" formControlName="nom">
+            <div *ngIf="acheteurForm.get('nom')?.touched && acheteurForm.get('nom')?.invalid" class="text-danger">
+              Le nom est requis
+            </div>
+          </div>
+          <!-- Prénom -->
+          <div class="col-md-6 mb-3">
+            <label for="prenom" class="form-label">Prénom</label>
+            <input id="prenom" type="text" class="form-control" formControlName="prenom">
+            <div *ngIf="acheteurForm.get('prenom')?.touched && acheteurForm.get('prenom')?.invalid" class="text-danger">
+              Le prénom est requis
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Email -->
+          <div class="col-md-6 mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="email" class="form-control" formControlName="email">
+            <div *ngIf="acheteurForm.get('email')?.touched && acheteurForm.get('email')?.invalid" class="text-danger">
+              <div *ngIf="acheteurForm.get('email')?.errors?.['required']">L'email est requis</div>
+              <div *ngIf="acheteurForm.get('email')?.errors?.['email']">Adresse email invalide</div>
+            </div>
+          </div>
+          <!-- Mot de passe (ajout uniquement) -->
+          <div class="col-md-6 mb-3" *ngIf="!isEdit">
+            <label for="motDePasse" class="form-label">Mot de passe</label>
+            <input id="motDePasse" type="password" class="form-control" formControlName="motDePasse">
+            <div *ngIf="acheteurForm.get('motDePasse')?.touched && acheteurForm.get('motDePasse')?.invalid" class="text-danger">
+              Le mot de passe est requis
+            </div>
+          </div>
+        </div>
+        <!-- Boutons -->
+        <div class="mt-4 d-flex justify-content-end gap-2">
+          <button type="button" class="btn btn-secondary" (click)="onCancel()">Annuler</button>
+          <button type="submit" class="btn btn-primary" [disabled]="acheteurForm.invalid">
+            {{ isEdit ? 'Modifier' : 'Ajouter' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

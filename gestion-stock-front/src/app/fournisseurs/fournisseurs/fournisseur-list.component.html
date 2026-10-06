@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Liste des Fournisseurs</h2>
+    <button class="btn btn-primary" (click)="ajouter()" [disabled]="readOnly">Ajouter</button>
+
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Adresse</th>
+      <th>Téléphone</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let f of fournisseurs">
+      <td>{{ f.nom }}</td>
+      <td>{{ f.adresse }}</td>
+      <td>{{ f.telephone }}</td>
+      <td>{{ f.email }}</td>
+      <td>
+        <button class="btn btn-sm btn-info me-2" (click)="modifier(f.id!)" [disabled]="readOnly">Modifier</button>
+        <button class="btn btn-sm btn-danger" (click)="supprimer(f.id!)" [disabled]="readOnly">Supprimer</button>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>

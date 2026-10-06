@@ -1,0 +1,165 @@
+/* Navbar moderne */
+.navbar {
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.navbar-brand {
+  color: white !important;
+  font-size: 1.25rem;
+}
+
+/* Cloche de notification */
+.notification-bell {
+  padding: 0.5rem 0.75rem !important;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  color: white !important;
+}
+
+.notification-bell:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.notification-bell i {
+  font-size: 1.2rem;
+}
+
+/* Badge de notification */
+.notification-badge {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  color: white;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Menu déroulant moderne */
+.notification-dropdown {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  min-width: 320px;
+  margin-top: 0.5rem;
+  background: #fff;
+}
+
+/* Header fixe dans le dropdown */
+.notification-header {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #495057;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #dee2e6;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* Zone de défilement */
+.notification-scroll-area {
+  max-height: 300px; /* Ajuste la hauteur max selon ton besoin */
+  overflow-y: auto;
+  padding: 0.5rem 0;
+}
+
+/* Barre de défilement personnalisée (optionnel, pour Chrome/Edge) */
+.notification-scroll-area::-webkit-scrollbar {
+  width: 8px;
+}
+.notification-scroll-area::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+.notification-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Item vide */
+.notification-empty {
+  padding: 1rem;
+  text-align: center;
+  color: #aaa;
+}
+
+/* Items de notification */
+.notification-item {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f8f9fa;
+  transition: background-color 0.2s ease;
+}
+
+.notification-item:hover {
+  background-color: #f8f9fa;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-status {
+  margin-top: 0.25rem;
+}
+
+.notification-status .badge {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+
+/* Animation d'entrée */
+.dropdown-menu.show {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .notification-dropdown {
+    min-width: 280px;
+    right: 0;
+    left: auto;
+  }
+}

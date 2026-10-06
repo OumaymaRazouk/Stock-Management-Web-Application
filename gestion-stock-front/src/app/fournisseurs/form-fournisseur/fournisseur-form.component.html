@@ -1,0 +1,67 @@
+<div class="container mt-4">
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Chargement...</span>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="!loading">
+    <div class="card-header">
+      <h3 class="mb-0">{{ isEditMode ? 'Modifier le fournisseur' : 'Ajouter un fournisseur' }}</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="fournisseurForm" (ngSubmit)="onSubmitForm()" novalidate>
+        <div class="row">
+          <!-- Nom -->
+          <div class="col-md-6 mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input id="nom" type="text" class="form-control" formControlName="nom">
+            <div *ngIf="fournisseurForm.get('nom')?.touched && fournisseurForm.get('nom')?.invalid" class="text-danger">
+              Le nom est requis
+            </div>
+          </div>
+
+          <!-- Téléphone -->
+          <div class="col-md-6 mb-3">
+            <label for="telephone" class="form-label">Téléphone</label>
+            <input id="telephone" type="tel" class="form-control" formControlName="telephone">
+            <div *ngIf="fournisseurForm.get('telephone')?.touched && fournisseurForm.get('telephone')?.invalid" class="text-danger">
+              Le téléphone est requis
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Adresse -->
+          <div class="col-md-6 mb-3">
+            <label for="adresse" class="form-label">Adresse</label>
+            <textarea id="adresse" class="form-control" rows="3" formControlName="adresse"></textarea>
+            <div *ngIf="fournisseurForm.get('adresse')?.touched && fournisseurForm.get('adresse')?.invalid" class="text-danger">
+              L'adresse est requise
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="col-md-6 mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="email" class="form-control" formControlName="email">
+            <div *ngIf="fournisseurForm.get('email')?.touched && fournisseurForm.get('email')?.invalid" class="text-danger">
+              <div *ngIf="fournisseurForm.get('email')?.errors?.['required']">L'email est requis</div>
+              <div *ngIf="fournisseurForm.get('email')?.errors?.['email']">Adresse email invalide</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Boutons -->
+        <div class="mt-4 d-flex justify-content-end gap-2">
+          <button type="button" class="btn btn-secondary" (click)="annuler()">Annuler</button>
+          <button type="submit" class="btn btn-primary"
+                  [disabled]="readOnly || isLoading || fournisseurForm.invalid">
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-1" aria-hidden="true"></span>
+            {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

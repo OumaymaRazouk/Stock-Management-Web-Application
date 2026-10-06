@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Chargement...</span>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="!loading">
+    <div class="card-header">
+      <h3 class="mb-0">{{ isEditMode ? 'Modifier le besoin' : 'Ajouter un besoin' }}</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="besoinForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+          <!-- Article -->
+          <div class="col-md-6 mb-3">
+            <label for="articleId" class="form-label">Article</label>
+            <select id="articleId" formControlName="articleId" class="form-select">
+              <option value="">-- Sélectionnez un article --</option>
+              <option *ngFor="let article of articles" [value]="article.id.toString()">
+                {{ article.reference }}
+              </option>
+            </select>
+            <div *ngIf="f['articleId'].invalid && f['articleId'].dirty" class="text-danger">
+              <small *ngIf="f['articleId'].errors?.['required']">L'article est obligatoire</small>
+            </div>
+          </div>
+
+          <!-- Quantité -->
+          <div class="col-md-6 mb-3">
+            <label for="quantite" class="form-label">Quantité</label>
+            <input type="number" id="quantite" formControlName="quantite" class="form-control" min="1" />
+            <div *ngIf="f['quantite'].invalid && f['quantite'].dirty" class="text-danger">
+              <small *ngIf="f['quantite'].errors?.['required']">La quantité est obligatoire</small>
+              <small *ngIf="f['quantite'].errors?.['min']">La quantité doit être supérieure à 0</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Date besoin -->
+          <div class="col-md-6 mb-3">
+            <label for="dateBesoin" class="form-label">Date de besoin</label>
+            <input type="date" id="dateBesoin" formControlName="dateBesoin" class="form-control" />
+            <div *ngIf="f['dateBesoin'].invalid && f['dateBesoin'].dirty" class="text-danger">
+              <small *ngIf="f['dateBesoin'].errors?.['required']">La date est obligatoire</small>
+            </div>
+          </div>
+
+          <!-- Type besoin -->
+          <div class="col-md-6 mb-3">
+            <label for="typeBesoin" class="form-label">Type de besoin</label>
+            <select id="typeBesoin" formControlName="typeBesoin" class="form-select">
+              <option value="">-- Sélectionnez un type --</option>
+              <option *ngFor="let type of typeBesoins" [value]="type">{{ type }}</option>
+            </select>
+            <div *ngIf="f['typeBesoin'].invalid && f['typeBesoin'].dirty" class="text-danger">
+              <small *ngIf="f['typeBesoin'].errors?.['required']">Le type est obligatoire</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Boutons -->
+        <div class="mt-4 d-flex justify-content-end gap-2">
+          <button type="button" class="btn btn-secondary" (click)="goBack()">Annuler</button>
+          <button type="submit" class="btn btn-primary" [disabled]="besoinForm.invalid">
+            {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

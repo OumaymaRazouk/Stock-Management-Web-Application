@@ -1,0 +1,115 @@
+/* --- Sidebar (exemple, adapte la largeur à ta sidebar réelle) --- */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 240px;
+  height: 100vh;
+  background: linear-gradient(180deg, #6a82fb 0%, #fc5c7d 100%);
+  color: #fff;
+  z-index: 100;
+  /* ... autres styles de ta sidebar ... */
+}
+
+/* --- Contenu principal --- */
+.main-content {
+  margin-left: 240px; /* même largeur que la sidebar */
+  min-height: 100vh;
+  background-color: #f4f7fc;
+  transition: margin-left 0.3s;
+}
+
+/* --- Titre de la page --- */
+h2 {
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+/* --- Conteneur du Tableau (effet carte) --- */
+.table-container {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  overflow-x: auto; /* Scroll horizontal si besoin */
+}
+
+/* --- Tableau --- */
+.table {
+  width: 100%;
+  min-width: 1200px; /* Largeur minimale pour forcer le scroll si l'écran est petit */
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th, .table td {
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* --- En-tête du tableau --- */
+.table thead.table-dark th {
+  background-color: #34495e;
+  color: white;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  padding: 1rem 1.5rem;
+  vertical-align: middle;
+  position: sticky;
+  top: 0;
+}
+
+.table thead th:first-child { border-top-left-radius: 8px; }
+.table thead th:last-child { border-top-right-radius: 8px; }
+
+/* --- Lignes du tableau --- */
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* --- Cellules du tableau --- */
+.table tbody td {
+  padding: 1rem 1.5rem;
+  vertical-align: middle;
+  border-top: 1px solid #ecf0f1;
+  color: #34495e;
+  font-weight: 500;
+}
+
+/* --- Bouton "Voir / PDF" --- */
+.btn-primary {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.btn-sm {
+  font-size: 0.8rem;
+}
+
+/* --- Responsive : sur mobile, la sidebar passe au-dessus --- */
+@media (max-width: 991px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+  .main-content {
+    margin-left: 0;
+  }
+}

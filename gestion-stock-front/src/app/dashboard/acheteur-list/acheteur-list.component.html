@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <h2>Liste des acheteurs</h2>
+  <div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-primary" (click)="addAcheteur()">Ajouter un acheteur</button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let acheteur of acheteurs">
+      <td>{{ acheteur.nom }}</td>
+      <td>{{ acheteur.prenom }}</td>
+      <td>{{ acheteur.email }}</td>
+      <td>
+        <button class="btn btn-sm btn-warning me-2"
+                *ngIf="acheteur.id !== undefined"
+                (click)="editAcheteur(acheteur.id)">
+          Modifier
+        </button>
+        <button class="btn btn-sm btn-danger"
+                *ngIf="acheteur.id !== undefined"
+                (click)="deleteAcheteur(acheteur.id)">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

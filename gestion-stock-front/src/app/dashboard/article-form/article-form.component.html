@@ -1,0 +1,94 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="mb-0">{{ isModification ? 'Modifier' : 'Ajouter' }} Article</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <!-- Référence -->
+          <div class="col-md-6 mb-3">
+            <label for="reference" class="form-label">Référence *</label>
+            <input type="text" class="form-control" id="reference" formControlName="reference">
+            <div *ngIf="f['reference'].touched && f['reference'].invalid" class="text-danger">
+              <small *ngIf="f['reference'].errors?.['required']">La référence est requise</small>
+            </div>
+          </div>
+
+          <!-- Stock Sécurité -->
+          <div class="col-md-6 mb-3">
+            <label for="stockSecurite" class="form-label">Stock Sécurité *</label>
+            <input type="number" class="form-control" id="stockSecurite" formControlName="stockSecurite">
+            <div *ngIf="f['stockSecurite'].touched && f['stockSecurite'].invalid" class="text-danger">
+              <small *ngIf="f['stockSecurite'].errors?.['required']">Le stock sécurité est requis</small>
+              <small *ngIf="f['stockSecurite'].errors?.['min']">Le stock sécurité doit être positif</small>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="col-12 mb-3">
+            <label for="description" class="form-label">Description *</label>
+            <textarea class="form-control" id="description" formControlName="description" rows="3"></textarea>
+            <div *ngIf="f['description'].touched && f['description'].invalid" class="text-danger">
+              <small *ngIf="f['description'].errors?.['required']">La description est requise</small>
+            </div>
+          </div>
+
+          <!-- Quantité Conditionnement -->
+          <div class="col-md-6 mb-3">
+            <label for="quantiteConditionnement" class="form-label">Quantité Conditionnement *</label>
+            <input type="number" class="form-control" id="quantiteConditionnement" formControlName="quantiteConditionnement">
+            <div *ngIf="f['quantiteConditionnement'].touched && f['quantiteConditionnement'].invalid" class="text-danger">
+              <small *ngIf="f['quantiteConditionnement'].errors?.['required']">La quantité de conditionnement est requise</small>
+              <small *ngIf="f['quantiteConditionnement'].errors?.['min']">La quantité doit être au moins 1</small>
+            </div>
+          </div>
+
+          <!-- Quantité -->
+          <div class="col-md-6 mb-3">
+            <label for="quantite" class="form-label">Quantité *</label>
+            <input type="number" class="form-control" id="quantite" formControlName="quantite">
+            <div *ngIf="f['quantite'].touched && f['quantite'].invalid" class="text-danger">
+              <small *ngIf="f['quantite'].errors?.['required']">La quantité est requise</small>
+              <small *ngIf="f['quantite'].errors?.['min']">La quantité doit être positive</small>
+            </div>
+          </div>
+
+          <!-- Prix -->
+          <div class="col-md-6 mb-3">
+            <label for="prix" class="form-label">Prix *</label>
+            <input type="number" class="form-control" id="prix" formControlName="prix" step="0.01">
+            <div *ngIf="f['prix'].touched && f['prix'].invalid" class="text-danger">
+              <small *ngIf="f['prix'].errors?.['required']">Le prix est requis</small>
+              <small *ngIf="f['prix'].errors?.['min']">Le prix doit être positif</small>
+            </div>
+          </div>
+
+          <!-- Fournisseur -->
+          <div class="col-md-6 mb-3">
+            <label for="fournisseurId" class="form-label">Fournisseur *</label>
+            <select class="form-select" id="fournisseurId" formControlName="fournisseurId">
+              <option value="">Sélectionner un fournisseur</option>
+              <option *ngFor="let fournisseur of fournisseurs" [value]="fournisseur.id">
+                {{ fournisseur.nom }}
+              </option>
+            </select>
+            <div *ngIf="f['fournisseurId'].touched && f['fournisseurId'].invalid" class="text-danger">
+              <small *ngIf="f['fournisseurId'].errors?.['required']">Le fournisseur est requis</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Boutons d'action -->
+        <div class="mt-4">
+          <button type="submit" class="btn btn-primary me-2" [disabled]="articleForm.invalid || submitted">
+            {{ isModification ? 'Modifier' : 'Ajouter' }}
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="onCancel()">
+            Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

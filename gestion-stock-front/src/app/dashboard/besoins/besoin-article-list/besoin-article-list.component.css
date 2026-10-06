@@ -1,0 +1,139 @@
+/* === Styles Modernes pour la Liste des Besoins (Thème Bleu + Pleine Largeur SANS DÉFILEMENT) === */
+
+/* --- Conteneur principal --- */
+.container-fluid {
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+}
+
+h2 {
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+/* --- Zone de filtres --- */
+.filters-container {
+  background-color: #ffffff;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group .form-label {
+  font-weight: 600;
+  color: #5a6a7b;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.filter-group .form-control,
+.filter-group .form-select {
+  background-color: #f8f9fa;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #34495e;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.filter-group .form-control:focus,
+.filter-group .form-select:focus {
+  background-color: #ffffff;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+  outline: none;
+}
+
+/* --- Bouton "Ajouter un besoin" --- */
+.btn-primary {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 25px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: white;
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+}
+
+/* --- Carte du montant total --- */
+.card {
+  border-radius: 12px;
+  border-width: 2px;
+}
+
+.card.border-primary { border-color: #3498db !important; }
+.text-primary { color: #2980b9 !important; }
+.card .text-muted { font-weight: 500; color: #95a5a6 !important; }
+.card .fw-bold { font-size: 1.5rem; }
+
+/* --- Conteneur du Tableau --- */
+.table-container {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  /* La propriété overflow-x est supprimée pour empêcher tout défilement */
+}
+
+/* ===== CORRECTION PRINCIPALE ICI ===== */
+.table {
+  width: 100%; /* Force le tableau à prendre 100% de la largeur */
+  table-layout: fixed; /* Les colonnes s'ajustent pour remplir l'espace disponible */
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table td, .table th {
+  word-break: break-word; /* Permet au texte trop long de passer à la ligne */
+  hyphens: auto; /* Aide à la césure pour un meilleur affichage */
+}
+/* ===================================== */
+
+
+.table thead th {
+  background-color: #34495e;
+  color: white;
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 1rem 1.5rem;
+  vertical-align: middle;
+}
+
+.table tbody td {
+  padding: 1rem 1.5rem;
+  vertical-align: middle;
+  border-top: 1px solid #ecf0f1;
+  color: #34495e;
+}
+
+/* --- Boutons d'action dans le tableau --- */
+.btn-sm {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1rem;
+}

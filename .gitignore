@@ -1,0 +1,41 @@
+# Dependencies and generated files
+node_modules/
+dist/
+.angular/
+target/
+coverage/
+out-tsc/
+.maven-cache/
+
+# Editors
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+application-local.properties
+application-local.yml
+application-local.yaml
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+secrets/
+
+# Logs, temporary files and database backups
+*.log
+*.tmp
+*.bak
+*.mdf
+*.ldf
+*.dmp
+tmp/
+.DS_Store
+Thumbs.db

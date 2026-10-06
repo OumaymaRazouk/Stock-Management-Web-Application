@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h2>Liste des Commandes</h2>
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+    <tr>
+      <th>Référence Commande</th>
+      <th>Date Commande</th>
+      <th>Date Arrivage</th>
+      <th>Montant Total (DH)</th>
+      <th>Fournisseur</th>
+      <th>Statut</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let commande of commandes">
+      <td>CMD-{{ commande.id.toString().padStart(6, '0') }}</td>
+      <td>{{ commande.dateCommande | date:'dd/MM/yyyy' }}</td>
+      <td>
+        <!-- Affiche la date d'arrivage la plus tardive -->
+        {{ getDateArrivageMax(commande) | date:'dd/MM/yyyy' }}
+      </td>
+      <td>
+          <span [class]="commande.montantTotal && commande.montantTotal > 0 ? 'text-success' : 'text-warning'">
+            {{ commande.montantTotal | currency:'MAD':'symbol':'1.2-2' }}
+          </span>
+      </td>
+      <td>{{ commande.fournisseurNom || 'N/A' }}</td>
+      <td>
+          <span [class]="getStatusClass(commande.statusCommande)">
+            {{ getStatusLabel(commande.statusCommande) }}
+          </span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

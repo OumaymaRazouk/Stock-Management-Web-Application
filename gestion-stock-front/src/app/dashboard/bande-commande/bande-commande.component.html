@@ -1,0 +1,50 @@
+<div class="container-fluid p-4">
+  <h2>Bandes de Commande d'Achat</h2>
+  <div class="table-container">
+    <table class="table table-hover">
+      <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Référence Article</th>
+        <th>Désignation</th>
+        <th>Qté commandée</th>
+        <th>Conditionnement</th>
+        <th>Qté finale (paquets)</th>
+        <th>Date commande</th>
+        <th>Date arrivage</th>
+        <th>Fournisseur</th>
+        <th>Prix unitaire</th>
+        <th>Montant</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let bande of bandes; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ bande.articleReference }}</td>
+        <td>{{ bande.designationArticle }}</td>
+        <td>{{ bande.quantite }}</td>
+        <td>{{ bande.quantiteConditionnement }}</td>
+        <td>
+          {{ bande.quantite }} ({{ getNbPaquets(bande.quantite, bande.quantiteConditionnement) }} paquets)
+        </td>
+        <td>{{ bande.dateCommande | date:'dd/MM/yyyy' }}</td>
+        <td>{{ bande.dateArrivage | date:'dd/MM/yyyy' }}</td>
+        <td>{{ bande.fournisseurNom }}</td>
+        <td>{{ bande.prixUnitaire | currency:'MAD':'symbol':'1.2-2' }}</td>
+        <td>{{ bande.montantBande | currency:'MAD':'symbol':'1.2-2' }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" [routerLink]="['/bandes-commande', bande.id]">
+            Voir / PDF
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="!bandes || bandes.length === 0">
+        <td colspan="12" class="text-center text-muted py-4">
+          Aucune bande de commande à afficher.
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

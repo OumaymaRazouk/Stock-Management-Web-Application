@@ -1,0 +1,117 @@
+/* === Styles Modernes pour la page Alertes Stock === */
+
+/* --- Conteneur principal --- */
+.container-fluid {
+  background-color: #f4f7fc;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+/* --- Titre et stats --- */
+h2 {
+  font-weight: 700;
+  color: #2c3e50;
+  letter-spacing: -0.5px;
+}
+
+.alert-stats .badge {
+  font-size: 1rem;
+  padding: 0.7em 1.2em;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+/* --- Cartes d'alerte --- */
+.card {
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  border-width: 2px;
+  transition: transform 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(52, 152, 219, 0.10);
+}
+
+.card-header {
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  color: #5a6a7b;
+  font-size: 0.97rem;
+  margin-bottom: 0.7rem;
+}
+
+.badge {
+  font-size: 0.95rem;
+  padding: 0.5em 1.1em;
+  border-radius: 50px;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.bg-danger {
+  background: linear-gradient(45deg, #e74c3c, #c0392b) !important;
+  color: #fff !important;
+}
+
+.bg-warning {
+  background: linear-gradient(45deg, #f1c40f, #f39c12) !important;
+  color: #2c3e50 !important;
+}
+
+.alert-success {
+  background-color: #eafaf1;
+  color: #27ae60;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(39, 174, 96, 0.07);
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #c0392b;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.07);
+}
+
+/* --- Spinner --- */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  color: #3498db;
+  margin: 2rem auto;
+  display: block;
+}
+
+/* --- Responsive --- */
+@media (max-width: 991px) {
+  .card {
+    margin-bottom: 1.5rem;
+  }
+  .alert-stats {
+    margin-top: 1rem;
+  }
+}

@@ -1,0 +1,90 @@
+<!-- src/app/dashboard/alertes/alertes.component.html -->
+<div class="container-fluid bg-light min-vh-100 p-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">
+          <i class="bi bi-exclamation-triangle text-warning me-2"></i>
+          Alertes Stock
+        </h2>
+        <div class="alert-stats">
+          <span class="badge bg-danger fs-6 me-2">{{ getRuptureCount() }} Ruptures</span>
+          <span class="badge bg-warning text-dark fs-6">{{ getFaibleCount() }} Stock faible</span>
+        </div>
+      </div>
+
+      <div *ngIf="loading" class="text-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Chargement...</span>
+        </div>
+      </div>
+
+      <div *ngIf="error" class="alert alert-danger">
+        {{ error }}
+      </div>
+
+      <div *ngIf="!loading && articlesCritiques.length === 0" class="alert alert-success">
+        <i class="bi bi-check-circle me-2"></i>
+        Aucune alerte de stock pour le moment.
+      </div>
+
+      <div *ngIf="!loading && articlesCritiques.length > 0" class="row g-4">
+        <!-- Articles en rupture -->
+        <div *ngIf="getRuptureCount() > 0" class="col-12">
+          <h4 class="text-danger mb-3">
+            <i class="bi bi-x-circle me-2"></i>
+            Articles en rupture ({{ getRuptureCount() }})
+          </h4>
+          <div class="row g-3">
+            <div *ngFor="let article of getArticlesRupture()"
+                 class="col-md-6 col-lg-4">
+              <div class="card border-danger h-100">
+                <div class="card-header bg-danger text-white">
+                  <i class="bi bi-x-circle me-2"></i>
+                  {{ article.reference }}
+                </div>
+                <div class="card-body">
+                  <h6 class="card-title">{{ article.description }}</h6>
+                  <p class="card-text">
+                    <strong>Stock actuel:</strong> {{ article.quantite || 0 }}<br>
+                    <strong>Stock de sécurité:</strong> {{ article.stockSecurite }}<br>
+                    <strong>Prix:</strong> {{ article.prix | number: '1.2-2' }} DH
+                  </p>
+                  <span class="badge bg-danger">RUPTURE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Articles en stock faible -->
+        <div *ngIf="getFaibleCount() > 0" class="col-12 mt-4">
+          <h4 class="text-warning mb-3">
+            <i class="bi bi-exclamation-triangle me-2"></i>
+            Articles en stock faible ({{ getFaibleCount() }})
+          </h4>
+          <div class="row g-3">
+            <div *ngFor="let article of getArticlesFaible()"
+                 class="col-md-6 col-lg-4">
+              <div class="card border-warning h-100">
+                <div class="card-header bg-warning text-dark">
+                  <i class="bi bi-exclamation-triangle me-2"></i>
+                  {{ article.reference }}
+                </div>
+                <div class="card-body">
+                  <h6 class="card-title">{{ article.description }}</h6>
+                  <p class="card-text">
+                    <strong>Stock actuel:</strong> {{ article.quantite || 0 }}<br>
+                    <strong>Stock de sécurité:</strong> {{ article.stockSecurite }}<br>
+                    <strong>Prix:</strong> {{ article.prix | number: '1.2-2' }} DH
+                  </p>
+                  <span class="badge bg-warning text-dark">STOCK FAIBLE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+/* === Styles Modernes pour la Liste des Fournisseurs === */
+
+/* --- Conteneur principal --- */
+.container {
+  background-color: #f4f7fc;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+/* --- Titre et bouton --- */
+h2 {
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 28px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.15);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.18);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Tableau effet carte --- */
+.table {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.table thead th {
+  background-color: #34495e;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  padding: 1rem 1.5rem;
+  border: none;
+}
+
+.table tbody td {
+  padding: 1rem 1.5rem;
+  vertical-align: middle;
+  border-top: 1px solid #ecf0f1;
+  color: #34495e;
+  font-weight: 500;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* --- Boutons d'action --- */
+.btn-info {
+  background: linear-gradient(45deg, #6dd5fa, #2980b9);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-info:hover:not(:disabled) {
+  background: linear-gradient(45deg, #2980b9, #6dd5fa);
+  color: #fff;
+}
+
+.btn-danger {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: linear-gradient(45deg, #c0392b, #e74c3c);
+  color: #fff;
+}
+
+.btn-sm {
+  font-size: 0.9rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 991px) {
+  .table {
+    display: block;
+    overflow-x: auto;
+  }
+}

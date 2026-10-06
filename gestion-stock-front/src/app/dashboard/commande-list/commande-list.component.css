@@ -1,0 +1,93 @@
+/* === Styles Modernes pour la Liste des Commandes === */
+
+/* --- Conteneur principal --- */
+.container {
+  background-color: #f4f7fc;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+/* --- Titre --- */
+h2 {
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+/* --- Tableau effet carte --- */
+.table {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.table thead.table-dark th {
+  background-color: #34495e;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  padding: 1rem 1.5rem;
+  border: none;
+}
+
+.table tbody td {
+  padding: 1rem 1.5rem;
+  vertical-align: middle;
+  border-top: 1px solid #ecf0f1;
+  color: #34495e;
+  font-weight: 500;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* --- Statut et montant --- */
+.text-success {
+  color: #27ae60 !important;
+  font-weight: 600;
+}
+
+.text-warning {
+  color: #f39c12 !important;
+  font-weight: 600;
+}
+
+/* --- Statut badge custom --- */
+.badge {
+  font-size: 0.95rem;
+  padding: 0.5em 1.1em;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.badge-success {
+  background: linear-gradient(45deg, #2ecc71, #27ae60);
+  color: #fff;
+}
+
+.badge-warning {
+  background: linear-gradient(45deg, #f1c40f, #f39c12);
+  color: #2c3e50;
+}
+
+.badge-danger {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  color: #fff;
+}
+
+/* --- Responsive --- */
+@media (max-width: 991px) {
+  .table {
+    display: block;
+    overflow-x: auto;
+  }
+}

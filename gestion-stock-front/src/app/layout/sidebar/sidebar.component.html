@@ -1,0 +1,41 @@
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h3 class="company-name">
+      <i class="bi bi-lightning-charge me-2"></i>
+      Power Integration
+    </h3>
+    <p class="company-subtitle">Gestion de Stock</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a [routerLink]="['/dashboard']" class="nav-link" routerLinkActive="active">
+      <i class="bi bi-speedometer2"></i> Dashboard
+    </a>
+    <a [routerLink]="['/articles']" class="nav-link" routerLinkActive="active">
+      <i class="bi bi-box"></i> Articles
+    </a>
+    <a [routerLink]="['/besoins']" class="nav-link" routerLinkActive="active">
+      <i class="bi bi-clipboard-check"></i> Besoins exprimés
+    </a>
+    <a *ngIf="auth.canManagePurchases()" [routerLink]="['/bandes-commande']" class="nav-link" routerLinkActive="active">
+      <i class="bi bi-calendar-alt"></i> Bandes de commande
+    </a>
+    <a [routerLink]="['/alertes']" class="nav-link" routerLinkActive="active">
+      <i class="bi bi-exclamation-triangle"></i> Alertes stock
+    </a>
+    <a [routerLink]="['/fournisseurs']" class="nav-link" routerLinkActive="active">
+      <i class="bi bi-truck"></i> Fournisseurs
+    </a>
+    <a *ngIf="auth.canManagePurchases()" [routerLink]="['/commandes']" class="nav-link" routerLinkActive="active">
+      <i class="bi bi-file-invoice"></i> Commandes passées
+    </a>
+
+    <a *ngIf="auth.isAdmin()" [routerLink]="['/comptes']" class="nav-link" routerLinkActive="active">
+      <i class="bi bi-people"></i> Gestion des comptes
+    </a>
+
+    <a *ngIf="auth.canManagePurchases()" [routerLink]="['/preparation-commande']" class="nav-link" routerLinkActive="active">
+      <i class="bi bi-clipboard-data"></i> Préparation des achats
+    </a>
+  </nav>
+</div>

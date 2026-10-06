@@ -1,0 +1,60 @@
+<div class="container my-4 p-4 rounded shadow bg-white" style="max-width: 700px;">
+  <div class="text-center mb-4">
+    <h2 class="fw-bold" style="letter-spacing: 1px;">Bon de Commande</h2>
+    <div class="text-muted">N° BC-{{ bande.commandeId }}</div>
+    <div class="text-muted">Date de commande : {{ bande.dateCommande | date:'dd/MM/yyyy' }}</div>
+    <div class="text-muted">Date d'arrivage : {{ bande.dateArrivage | date:'dd/MM/yyyy' }}</div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-6">
+      <h5 class="mb-2">Fournisseur</h5>
+      <div><strong>Nom :</strong> {{ bande.fournisseurNom }}</div>
+      <div><strong>Téléphone :</strong> {{ bande.fournisseurTelephone || '-' }}</div>
+      <div><strong>Email :</strong> {{ bande.fournisseurEmail || '-' }}</div>
+    </div>
+    <div class="col-6 text-end">
+      <!--<img src="assets/logo-power-integration.png" alt="Power Integration" style="height: 50px;"> -->
+      <div class="fw-bold mt-2" style="color: #2c3e50;">Power Integration</div>
+    </div>
+  </div>
+
+  <table class="table table-bordered align-middle">
+    <thead class="table-primary">
+    <tr>
+      <th>N°</th>
+      <th>Référence</th>
+      <th>Désignation</th>
+      <th>Qté</th>
+      <th>Conditionnement</th>
+      <th>PU</th>
+      <th>Total Commande </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td>{{ bande.articleReference }}</td>
+      <td>{{ bande.designationArticle }}</td>
+      <td>{{ bande.quantite }}</td>
+      <td>{{ bande.quantiteConditionnement }}</td>
+      <td>{{ bande.prixUnitaire | number:'1.2-2' }} DH</td>
+      <td>{{ bande.montantBande | number:'1.2-2' }} DH</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-end mt-3">
+    <div class="me-4">
+      <div><strong>Total HT :</strong> {{ bande.montantBande | number:'1.2-2' }} DH</div>
+      <div><strong>TVA (20%) :</strong> {{ (bande.montantBande * 0.2) | number:'1.2-2' }} DH</div>
+      <div class="fw-bold text-primary"><strong>Total TTC :</strong> {{ (bande.montantBande * 1.2) | number:'1.2-2' }} DH</div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <button class="btn btn-primary px-4" (click)="telechargerPDF()">
+      Télécharger le PDF
+    </button>
+  </div>
+</div>
